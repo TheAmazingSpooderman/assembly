@@ -1,19 +1,22 @@
 .data
-	num1: .word 10		# Store 10 at memor adress num1
-	num2: .word 15		# STore 15 at memory adress num2
-	num3: .word 5		# Store 5 at memory adress num3
+	num1:	.word	12		# Store 12 at memory adress "num1"
+	num2:	.word	13		# Store 13 at memory adress "num2"
+	num3:	.word	0		# Store 0 at memory adress "num3"
 
-.text
+.text					# Code section
 
-main:
+.globl	main				# Declare the lable main as global
 
-	li $v0, 1
-	la $a0, num1
-	lw $t0, num2
-	lw $t1, num3
-	add $t3, $t0, $t1
-	sw $t3, num1
-	syscall
+# Program that loads words from memory and stores words to memory
+
+main:					# Starting point
+	lw	$t1, num1		# Load the value of num1 (12) into register t1 
+	lw	$t2, num2		# Load the value of num2 (13) int register t2
+	add	$t3, $t1, $t2		# Add the values located at registers t1 and t2 and store the result in t3
+	swr	$t3, num3		# Store the value located at register t3 (t1 + t2) into the memory adress num3
+
+exit:					# Label "exit"
+	li, $v0, 10			# Call syscall 10 to exit the program
+	syscall				# Perform syscall 10
 	
-	li $v0, 10
-	syscall
+	
