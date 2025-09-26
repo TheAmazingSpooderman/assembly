@@ -61,7 +61,7 @@ main:
 	end:
 		li $t6, 0 # counter
 		
-		#addi $t5, $t5, -1 # remove null terminator
+		addi $t5, $t5, -1 # remove null terminator
 		
 	loop:
 		lb $t0, 0($a2)
