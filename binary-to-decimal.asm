@@ -3,7 +3,7 @@
 main:
 
 .data
-	buffer:		.space		256
+	buffer:		.space		33
 	prompt:		.asciiz		"Enter a binary number:\n"
 	message:	.asciiz		"The decimal value is:\n"
 	zero:		.byte		'0'
@@ -16,7 +16,7 @@ main:
 	
 	li $v0, 8
 	la $a0, buffer
-	la $a1, 256
+	la $a1, 33
 	syscall
 	
 	move $a1, $a0 # cpy buffer into a1
